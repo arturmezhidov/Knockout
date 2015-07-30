@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<script src="Script/jquery-1.11.3.min.js"></script>
+	<link href="Style/bootstrap.css" rel="stylesheet" />
+	<script src="Script/bootstrap.js"></script>
+	<link href="Style/style.css" rel="stylesheet" />
+	<script src="Script/knockout.js"></script>
+	<script src="Model/dishes.js"></script>
+
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Конструктор комплексного обеда</a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="jumbotron">
+			
+			<h2>Список блюд</h2>
+
+			<div class="panel">
+				<table class="table table-hover">
+					<thead>
+					<tr>
+						<th>Фото</th>
+						<th>Название</th>
+						<th>Цена</th>
+						<th>Порция</th>
+						<th>Количество</th>
+						<th>Заказ</th>
+
+					</tr>
+					</thead>
+					<tbody data-bind="foreach: viewDishes">
+					<tr data-bind="select: isSelect">
+						<td><img data-bind="attr: { src: img }" class="table-image"/></td>
+						<td data-bind="text: name"></td>
+						<td data-bind="text: viewPrice"></td>
+						<td>
+							<input type="button" data-bind="click: $parent.addPortion, disable: ($parent.isMaxOrders() && !isSelect())" class="btn btn-default" value="Добавить" />
+							<input type="button" data-bind="click: $parent.subPortion" class="btn btn-default" value="Убрать"/>
+							<input type="button" data-bind="click: $parent.clearPortion" class="btn btn-default" value="Очистить"/>
+						</td>
+						<td data-bind="text: count"></td>
+						<td data-bind="text: orderPrice"></td>
+
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div data-bind="fade: isMaxOrders" class="message-panel">
+		<h2>Выбрано максимальное количество блюд!</h2>
+	</div>
+
+	<div data-bind="fade: isAnOrder" class="order-panel">
+		<h3>Ваш заказ</h3>
+		<div class="panel order-table">
+
+			<table class="table table-hover ">
+				<thead>
+					<tr>
+						<th>Название</th>
+						<th>Порция</th>
+						<th>Цена</th>
+						<th>Удалить</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: viewDishes">
+					<tr data-bind="if: isSelect">
+
+						<td data-bind="text: name"></td>
+						<td data-bind="text: count"></td>
+						<td data-bind="text: orderPrice"></td>
+						<td>
+							<input type="button" data-bind="click: $parent.clearPortion" class="table-btn" value="x" />
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+		<h4>Количество блюд: <span data-bind="text: orderCount"></span></h4>
+		<h4>Общая цена заказа: <span data-bind="text: totalPrice"></span></h4>
+		<input type="button" data-bind="click: toOrder" value="Заказать" class="btn btn-success"/>
+		<input type="button" data-bind="click: clearOrders" value="Отменить" class="btn btn-warning" />
+	</div>
+
+
+
+
+
+	<script src="ViewModel/viewModel.js"></script>
+	<script src="ViewModel/view-model.js"></script>
+</body>
+</html>
