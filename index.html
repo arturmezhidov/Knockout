@@ -1,17 +1,33 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-	<title></title>
-	<script src="Script/jquery-1.11.3.min.js"></script>
-	<link href="Style/bootstrap.css" rel="stylesheet" />
-	<script src="Script/bootstrap.js"></script>
-	<link href="Style/style.css" rel="stylesheet" />
-	<script src="Script/knockout.js"></script>
-	<script src="Model/dishes.js"></script>
 
+	<title>Knockout</title>
+
+	<link href="Style/bootstrap.css" rel="stylesheet" />
+	<link href="Style/style.css" rel="stylesheet" />
+
+	<script src="Scripts/jquery-1.11.3.min.js"></script>
+	<script src="Scripts/bootstrap.js"></script>
+	<script src="Scripts/dlg.js"></script>
+
+	<script src="Scripts/knockout.js"></script>
+
+	<script src="CustomBindings/select.js"></script>
+	<script src="CustomBindings/fade.js"></script>
+	<script src="CustomBindings/price.js"></script>
+
+	<script src="Model/DataService.js"></script>
+	<script src="Model/Dishes.js"></script>
+	<script src="ViewModel/DishViewModel.js"></script>
+	<script src="ViewModel/DishesViewModel.js"></script>
+	<script src="ViewModel/OrdersViewModel.js"></script>
+
+	<script src="App/app.js"></script>
 
 </head>
 <body>
+
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -22,51 +38,42 @@
 
 	<div class="container">
 		<div class="jumbotron">
-			
 			<h2>Список блюд</h2>
-
 			<div class="panel">
 				<table class="table table-hover">
 					<thead>
-					<tr>
-						<th>Фото</th>
-						<th>Название</th>
-						<th>Цена</th>
-						<th>Порция</th>
-						<th>Количество</th>
-						<th>Заказ</th>
-
-					</tr>
+						<tr>
+							<th>Фото</th>
+							<th>Название</th>
+							<th>Цена</th>
+							<th>Порция</th>
+							<th>Количество</th>
+							<th>Заказ</th>
+						</tr>
 					</thead>
-					<tbody data-bind="foreach: viewDishes">
-					<tr data-bind="select: isSelect">
-						<td><img data-bind="attr: { src: img }" class="table-image"/></td>
-						<td data-bind="text: name"></td>
-						<td data-bind="text: viewPrice"></td>
-						<td>
-							<input type="button" data-bind="click: $parent.addPortion, disable: ($parent.isMaxOrders() && !isSelect())" class="btn btn-default" value="Добавить" />
-							<input type="button" data-bind="click: $parent.subPortion" class="btn btn-default" value="Убрать"/>
-							<input type="button" data-bind="click: $parent.clearPortion" class="btn btn-default" value="Очистить"/>
-						</td>
-						<td data-bind="text: count"></td>
-						<td data-bind="text: orderPrice"></td>
-
-					</tr>
+					<tbody data-bind="foreach: dishes.viewDishes">
+						<tr data-bind="select: isSelect">
+							<td><img data-bind="attr: { src: dish.img }" class="table-image" /></td>
+							<td data-bind="text: dish.name"></td>
+							<td data-bind="price: dish.price"></td>
+							<td>
+								<button data-bind="click: add, enable: $root.orders.isAdded($data)" class="btn btn-default glyphicon glyphicon-plus"></button>
+								<button data-bind="click: sub, enable: isSelect" class="btn btn-default glyphicon glyphicon-minus"></button>
+								<button data-bind="click: clear, enable: isSelect" class="btn btn-default glyphicon glyphicon-remove"></button>
+							</td>
+							<td data-bind="text: count"></td>
+							<td data-bind="price: totalPrice"></td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
 
-	<div data-bind="fade: isMaxOrders" class="message-panel">
-		<h2>Выбрано максимальное количество блюд!</h2>
-	</div>
-
-	<div data-bind="fade: isAnOrder" class="order-panel">
+	<div data-bind="fade: !orders.isEmpty()" class="order-panel">
 		<h3>Ваш заказ</h3>
 		<div class="panel order-table">
-
-			<table class="table table-hover ">
+			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
 						<th>Название</th>
@@ -75,31 +82,66 @@
 						<th>Удалить</th>
 					</tr>
 				</thead>
-				<tbody data-bind="foreach: viewDishes">
-					<tr data-bind="if: isSelect">
-
-						<td data-bind="text: name"></td>
+				<tbody data-bind="foreach: orders.viewOrders">
+					<tr>
+						<td data-bind="text: dish.name"></td>
 						<td data-bind="text: count"></td>
-						<td data-bind="text: orderPrice"></td>
+						<td data-bind="price: totalPrice"></td>
 						<td>
-							<input type="button" data-bind="click: $parent.clearPortion" class="table-btn" value="x" />
+							<button data-bind="click: clear" class="table-btn glyphicon glyphicon-remove"></button>
 						</td>
 					</tr>
-
 				</tbody>
 			</table>
 		</div>
-		<h4>Количество блюд: <span data-bind="text: orderCount"></span></h4>
-		<h4>Общая цена заказа: <span data-bind="text: totalPrice"></span></h4>
-		<input type="button" data-bind="click: toOrder" value="Заказать" class="btn btn-success"/>
-		<input type="button" data-bind="click: clearOrders" value="Отменить" class="btn btn-warning" />
+		<h4>Количество блюд: <span data-bind="text: orders.count"></span></h4>
+		<h4>Общая цена заказа: <span data-bind="price: orders.totalPrice"></span></h4>
+		<input type="button" data-bind="click: orders.confirm" class="btn btn-success" value="Заказать" />
+		<input type="button" data-bind="click: orders.cancel" class="btn btn-warning" value="Отменить" />
 	</div>
 
+	<div data-bind="fade: orders.isMax" class="message-panel">
+		<h2>Выбрано максимальное количество блюд!</h2>
+	</div>
 
+	<div id="dialog-question" class="dialog-confirm">
+		<h4>Действительно хотите отменить заказ?</h4>
+		<input type="button" value="Да" class="btn btn-default btn-cancel-yes" />
+		<input type="button" value="Нет" class="btn btn-default btn-cancel-no" />
+	</div>
 
+	<div id="dialog-order-confirm" class="dialog-confirm">
+		<h3>Пожалуйста, подтвердите заказ!</h3>
+		<h4>Список заказанных блюд:</h4>
+		<table class="table table-hover table-striped">
 
+			<thead>
+				<tr>
+					<th>Название</th>
+					<th>Порция</th>
+					<th>Цена</th>
+				</tr>
+			</thead>
 
-	<script src="ViewModel/viewModel.js"></script>
-	<script src="ViewModel/view-model.js"></script>
+			<tbody data-bind="foreach: orders.viewOrders">
+				<tr>
+					<td data-bind="text: dish.name"></td>
+					<td data-bind="text: count"></td>
+					<td data-bind="price: totalPrice"></td>
+				</tr>
+			</tbody>
+		</table>
+		<h4>Общая цена заказа: <span data-bind="price: orders.totalPrice"></span></h4>
+		<input type="button" value="Подтвердить" class="btn btn-success btn-order-yes" />
+		<input type="button" value="Отменить" class="btn btn-warning btn-order-no" />
+	</div>
+
+	<div id="dialog-result" class="dialog-confirm">
+		<h4>Заказ принят!</h4>
+		<input type="button" value="Закрыть" class="btn btn-default btn-result-ok" />
+	</div>
+
+	<script src="App/main.js"></script>
+
 </body>
 </html>

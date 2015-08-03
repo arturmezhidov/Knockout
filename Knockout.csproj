@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -19,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,6 +59,21 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AppData\Dishes.json" />
+    <Content Include="App\app.js" />
+    <Content Include="App\main.js" />
+    <Content Include="CustomBindings\fade.js" />
+    <Content Include="CustomBindings\price.js" />
+    <Content Include="CustomBindings\select.js" />
+    <Content Include="Scripts\dlg.js" />
+    <Content Include="Model\DataService.js" />
+    <Content Include="Model\Dishes.js" />
+    <Content Include="packages.config" />
+    <Content Include="Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -66,37 +83,36 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
-    <Content Include="Model\dishes.js" />
-    <Content Include="Model\Images\1f808da3b600.jpeg" />
-    <Content Include="Model\Images\1f808da3b617.jpg" />
-    <Content Include="Model\Images\1f808da3b629.jpg" />
-    <Content Include="Model\Images\1f808da3b630.jpeg" />
-    <Content Include="Model\Images\1f808da3b633.jpg" />
-    <Content Include="Model\Images\1f808da3b634.jpg" />
-    <Content Include="Model\Images\1f808da3b635.jpg" />
-    <Content Include="Model\Images\1f808da3b655.jpg" />
-    <Content Include="Model\Images\1f808da3b656.jpg" />
-    <Content Include="Model\Images\1f808da3b660.jpg" />
-    <Content Include="Model\Images\1f808da3b661.jpg" />
-    <Content Include="Model\Images\1f808da3b662.jpg" />
-    <Content Include="Model\Images\1f808da3b664.jpg" />
-    <Content Include="Model\Images\1f808da3b665.jpg" />
-    <Content Include="Model\Images\1f808da3b666.jpg" />
-    <Content Include="Model\Images\1f808da3b6691.jpg" />
-    <Content Include="Model\Images\1f808da3b667.jpg" />
-    <Content Include="Model\Images\1f808da3b668.jpg" />
-    <Content Include="Model\Images\1f808da3b669.jpg" />
-    <Content Include="Model\Images\8092a8a543.jpg" />
-    <Content Include="Script\bootstrap.js" />
-    <Content Include="Script\jquery-1.11.3.min.js" />
-    <Content Include="Script\knockout.js" />
-    <Content Include="Script\requirejs.js" />
-    <Content Include="Script\util.js" />
+    <Content Include="AppData\Images\1f808da3b600.jpeg" />
+    <Content Include="AppData\Images\1f808da3b617.jpg" />
+    <Content Include="AppData\Images\1f808da3b629.jpg" />
+    <Content Include="AppData\Images\1f808da3b630.jpeg" />
+    <Content Include="AppData\Images\1f808da3b633.jpg" />
+    <Content Include="AppData\Images\1f808da3b634.jpg" />
+    <Content Include="AppData\Images\1f808da3b635.jpg" />
+    <Content Include="AppData\Images\1f808da3b655.jpg" />
+    <Content Include="AppData\Images\1f808da3b656.jpg" />
+    <Content Include="AppData\Images\1f808da3b660.jpg" />
+    <Content Include="AppData\Images\1f808da3b661.jpg" />
+    <Content Include="AppData\Images\1f808da3b662.jpg" />
+    <Content Include="AppData\Images\1f808da3b664.jpg" />
+    <Content Include="AppData\Images\1f808da3b665.jpg" />
+    <Content Include="AppData\Images\1f808da3b666.jpg" />
+    <Content Include="AppData\Images\1f808da3b6691.jpg" />
+    <Content Include="AppData\Images\1f808da3b667.jpg" />
+    <Content Include="AppData\Images\1f808da3b668.jpg" />
+    <Content Include="AppData\Images\1f808da3b669.jpg" />
+    <Content Include="AppData\Images\8092a8a543.jpg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\jquery-1.11.3.min.js" />
+    <Content Include="Scripts\knockout.js" />
+    <Content Include="Scripts\require.js" />
     <Content Include="Style\bootstrap-theme.css" />
     <Content Include="Style\bootstrap.css" />
     <Content Include="Style\style.css" />
-    <Content Include="ViewModel\view-model.js" />
-    <Content Include="ViewModel\viewModel.js" />
+    <Content Include="ViewModel\DishesViewModel.js" />
+    <Content Include="ViewModel\DishViewModel.js" />
+    <Content Include="ViewModel\OrdersViewModel.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +126,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
