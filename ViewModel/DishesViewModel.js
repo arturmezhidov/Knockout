@@ -1,9 +1,9 @@
-﻿//define(["Script/knockout", "ViewModel/DishViewModel"], function (ko, DishViewModel) {
+﻿define(["knockout", "DishViewModel"], function (ko, DishViewModel) {
 
 	function DishesViewModel(dishes) {
 
 		var self = this;
-		
+
 		self.viewDishes = ko.utils.arrayMap(dishes, function (dish) {
 			return new DishViewModel(dish);
 		});
@@ -12,7 +12,5 @@
 		});
 	}
 
-//	return DishesViewModel;
-//});
-
-
+	return DishesViewModel;
+});

@@ -1,83 +1,88 @@
-﻿var dlg = {
+﻿define(["jquery"], function ($) {
 
-	 backBlock: function () {
-		var background = $("<div />")
-			.addClass("backBlock")
-			.width($(document).width())
-			.height($(document).height())
-			.attr("id", "backBlock")
-			.appendTo("body");
-	 },
+	var dlg = {
 
-	 backUnblock: function(){
-	 	$("body").find("#backBlock").remove();
-	 },
+		backBlock: function () {
+			var background = $("<div />")
+				.addClass("backBlock")
+				.width($(document).width())
+				.height($(document).height())
+				.attr("id", "backBlock")
+				.appendTo("body");
+		},
 
-	 position: function (wnd) {
+		backUnblock: function () {
+			$("body").find("#backBlock").remove();
+		},
 
-	 	var top = ($(window).height() / 2) - (wnd.height() / 1.5);
-	 	var left = ($(window).width() / 2) - (wnd.width() / 2);
+		position: function (wnd) {
 
-	 	wnd.css({
-	 		top: top + "px",
-	 		left: left + "px"
-	 	});
-	 },
+			var top = ($(window).height() / 2) - (wnd.height() / 1.5);
+			var left = ($(window).width() / 2) - (wnd.width() / 2);
 
-	 question: function (callback) {
+			wnd.css({
+				top: top + "px",
+				left: left + "px"
+			});
+		},
 
-	 	var back = this;
-	 	var dlg = $("#dialog-question").show();
+		question: function (callback) {
 
-	 	back.position(dlg);
+			var back = this;
+			var dlg = $("#dialog-question").show();
 
-	 	back.backBlock();
- 
-	 	dlg.find(".btn-cancel-yes").click(function () {
-	 		dlg.hide();
-	 		back.backUnblock();
-	 		callback();
-		});
+			back.position(dlg);
 
-	 	dlg.find(".btn-cancel-no").click(function () {
-	 		dlg.hide();
-			back.backUnblock();
-		});
-	},
+			back.backBlock();
 
-	 confirm: function (callback) {
+			dlg.find(".btn-cancel-yes").click(function () {
+				dlg.hide();
+				back.backUnblock();
+				callback();
+			});
 
-	 	var back = this;
-	 	var dlg = $("#dialog-order-confirm").show();
+			dlg.find(".btn-cancel-no").click(function () {
+				dlg.hide();
+				back.backUnblock();
+			});
+		},
 
-	 	back.position(dlg);
+		confirm: function (callback) {
 
-	 	back.backBlock();
+			var back = this;
+			var dlg = $("#dialog-order-confirm").show();
 
-	 	dlg.find(".btn-order-yes").click(function () {
-	 		dlg.hide();
-	 		back.backUnblock();
-	 		callback();
-	 	});
+			back.position(dlg);
 
-	 	dlg.find(".btn-order-no").click(function () {
-	 		dlg.hide();
-	 		back.backUnblock();
-	 	});
-	 },
+			back.backBlock();
 
-	 result: function () {
+			dlg.find(".btn-order-yes").click(function () {
+				dlg.hide();
+				back.backUnblock();
+				callback();
+			});
 
-	 	var back = this;
-	 	var dlg = $("#dialog-result").show();
+			dlg.find(".btn-order-no").click(function () {
+				dlg.hide();
+				back.backUnblock();
+			});
+		},
 
-	 	back.position(dlg);
+		result: function () {
 
-	 	back.backBlock();
+			var back = this;
+			var dlg = $("#dialog-result").show();
 
-	 	dlg.find(".btn-result-ok").click(function () {
-	 		dlg.hide();
-	 		back.backUnblock();
-	 	});
-	 }
-}
+			back.position(dlg);
+
+			back.backBlock();
+
+			dlg.find(".btn-result-ok").click(function () {
+				dlg.hide();
+				back.backUnblock();
+			});
+		}
+	}
+
+	return dlg;
+});

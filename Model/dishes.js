@@ -1,8 +1,10 @@
-﻿//define(["Model/DataService"], function (service) {
+﻿define(["DataService"], function (service) {
 
-	function Dishes() {
-		this.dishes = service.JSONQuery("AppData/Dishes.json");
+	function Dishes(url) {
+		var self = this;
+		self.dishes = service.JsonQuery(url);
+		self.count = this.dishes.length;
 	}
 
-//	return Dishes;
-//});
+	return Dishes;
+});

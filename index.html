@@ -7,24 +7,6 @@
 	<link href="Style/bootstrap.css" rel="stylesheet" />
 	<link href="Style/style.css" rel="stylesheet" />
 
-	<script src="Scripts/jquery-1.11.3.min.js"></script>
-	<script src="Scripts/bootstrap.js"></script>
-	<script src="Scripts/dlg.js"></script>
-
-	<script src="Scripts/knockout.js"></script>
-
-	<script src="CustomBindings/select.js"></script>
-	<script src="CustomBindings/fade.js"></script>
-	<script src="CustomBindings/price.js"></script>
-
-	<script src="Model/DataService.js"></script>
-	<script src="Model/Dishes.js"></script>
-	<script src="ViewModel/DishViewModel.js"></script>
-	<script src="ViewModel/DishesViewModel.js"></script>
-	<script src="ViewModel/OrdersViewModel.js"></script>
-
-	<script src="App/app.js"></script>
-
 </head>
 <body>
 
@@ -113,24 +95,26 @@
 	<div id="dialog-order-confirm" class="dialog-confirm">
 		<h3>Пожалуйста, подтвердите заказ!</h3>
 		<h4>Список заказанных блюд:</h4>
-		<table class="table table-hover table-striped">
-
-			<thead>
-				<tr>
-					<th>Название</th>
-					<th>Порция</th>
-					<th>Цена</th>
-				</tr>
-			</thead>
-
-			<tbody data-bind="foreach: orders.viewOrders">
-				<tr>
-					<td data-bind="text: dish.name"></td>
-					<td data-bind="text: count"></td>
-					<td data-bind="price: totalPrice"></td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="panel order-table">
+			<table class="table table-hover table-striped">
+				<thead>
+					<tr>
+						<th>№</th>
+						<th>Название</th>
+						<th>Порция</th>
+						<th>Цена</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: orders.viewOrders">
+					<tr>
+						<td data-bind="text: ($index() + 1)"></td>
+						<td data-bind="text: dish.name"></td>
+						<td data-bind="text: count"></td>
+						<td data-bind="price: totalPrice"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 		<h4>Общая цена заказа: <span data-bind="price: orders.totalPrice"></span></h4>
 		<input type="button" value="Подтвердить" class="btn btn-success btn-order-yes" />
 		<input type="button" value="Отменить" class="btn btn-warning btn-order-no" />
@@ -141,7 +125,7 @@
 		<input type="button" value="Закрыть" class="btn btn-default btn-result-ok" />
 	</div>
 
-	<script src="App/main.js"></script>
+	<script data-main="App/main" src="Scripts/require.js"></script>
 
 </body>
 </html>

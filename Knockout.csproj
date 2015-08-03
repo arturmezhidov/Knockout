@@ -61,7 +61,9 @@
   <ItemGroup>
     <Content Include="AppData\Dishes.json" />
     <Content Include="App\app.js" />
+    <Content Include="App\config.js" />
     <Content Include="App\main.js" />
+    <Content Include="CustomBindings\bind-init.js" />
     <Content Include="CustomBindings\fade.js" />
     <Content Include="CustomBindings\price.js" />
     <Content Include="CustomBindings\select.js" />
@@ -118,9 +120,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Template\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

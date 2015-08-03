@@ -1,18 +1,22 @@
-﻿function initialize() {
+﻿define(["AppConfig", "knockout", "Dishes", "DishesViewModel", "OrdersViewModel", "bind-init"],
+	function (AppConfig, ko, Dishes, DishesViewModel, OrdersViewModel) {
 
-	var AppConfig = Object.freeze({
-		MAX_ORDER: 15
-	});
-	
-	var dishCollection = new Dishes();
+		function initialize() {
 
-	var viewDishes = new DishesViewModel(dishCollection.dishes);
-	var viewOrders = new OrdersViewModel(viewDishes, AppConfig.MAX_ORDER);
+			var dishCollection = new Dishes(AppConfig.DB_URL);
 
-	var viewModel = {
-		dishes: viewDishes,
-		orders: viewOrders
-	}
+			var viewDishes = new DishesViewModel(dishCollection.dishes);
+			var viewOrders = new OrdersViewModel(viewDishes, AppConfig.MAX_ORDER);
 
-	ko.applyBindings(viewModel);
-}
+			var viewModel = {
+				dishes: viewDishes,
+				orders: viewOrders
+			}
+
+			ko.applyBindings(viewModel);
+		};
+
+		return {
+			initialize: initialize
+		};
+});
