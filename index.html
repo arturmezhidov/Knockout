@@ -4,8 +4,8 @@
 
 	<title>Knockout</title>
 
-	<link href="Style/bootstrap.css" rel="stylesheet" />
-	<link href="Style/style.css" rel="stylesheet" />
+	<link href="Content/Style/bootstrap.css" rel="stylesheet" />
+	<link href="Content/Style/style.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -33,13 +33,13 @@
 							<th>Заказ</th>
 						</tr>
 					</thead>
-					<tbody data-bind="foreach: dishes.viewDishes">
+					<tbody data-bind="foreach: viewDishes.dishes">
 						<tr data-bind="select: isSelect">
 							<td><img data-bind="attr: { src: dish.img }" class="table-image" /></td>
 							<td data-bind="text: dish.name"></td>
 							<td data-bind="price: dish.price"></td>
 							<td>
-								<button data-bind="click: add, enable: $root.orders.isAdded($data)" class="btn btn-default glyphicon glyphicon-plus"></button>
+								<button data-bind="click: add, enable: $root.viewReceipts.isAdded($data)" class="btn btn-default glyphicon glyphicon-plus"></button>
 								<button data-bind="click: sub, enable: isSelect" class="btn btn-default glyphicon glyphicon-minus"></button>
 								<button data-bind="click: clear, enable: isSelect" class="btn btn-default glyphicon glyphicon-remove"></button>
 							</td>
@@ -52,7 +52,7 @@
 		</div>
 	</div>
 
-	<div data-bind="fade: !orders.isEmpty()" class="order-panel">
+	<div data-bind="fade: !viewReceipts.isEmpty()" class="order-panel">
 		<h3>Ваш заказ</h3>
 		<div class="panel order-table">
 			<table class="table table-hover table-striped">
@@ -64,7 +64,7 @@
 						<th>Удалить</th>
 					</tr>
 				</thead>
-				<tbody data-bind="foreach: orders.viewOrders">
+				<tbody data-bind="foreach: viewReceipts.receipts">
 					<tr>
 						<td data-bind="text: dish.name"></td>
 						<td data-bind="text: count"></td>
@@ -76,13 +76,13 @@
 				</tbody>
 			</table>
 		</div>
-		<h4>Количество блюд: <span data-bind="text: orders.count"></span></h4>
-		<h4>Общая цена заказа: <span data-bind="price: orders.totalPrice"></span></h4>
-		<input type="button" data-bind="click: orders.confirm" class="btn btn-success" value="Заказать" />
-		<input type="button" data-bind="click: orders.cancel" class="btn btn-warning" value="Отменить" />
+		<h4>Количество блюд: <span data-bind="text: viewReceipts.count"></span></h4>
+		<h4>Общая цена заказа: <span data-bind="price: viewReceipts.totalPrice"></span></h4>
+		<input type="button" data-bind="click: viewReceipts.confirm" class="btn btn-success" value="Заказать" />
+		<input type="button" data-bind="click: viewReceipts.cancel" class="btn btn-warning" value="Отменить" />
 	</div>
 
-	<div data-bind="fade: orders.isMax" class="message-panel">
+	<div data-bind="fade: viewReceipts.isMax" class="message-panel">
 		<h2>Выбрано максимальное количество блюд!</h2>
 	</div>
 
@@ -105,7 +105,7 @@
 						<th>Цена</th>
 					</tr>
 				</thead>
-				<tbody data-bind="foreach: orders.viewOrders">
+				<tbody data-bind="foreach: viewReceipts.receipts">
 					<tr>
 						<td data-bind="text: ($index() + 1)"></td>
 						<td data-bind="text: dish.name"></td>
@@ -115,7 +115,7 @@
 				</tbody>
 			</table>
 		</div>
-		<h4>Общая цена заказа: <span data-bind="price: orders.totalPrice"></span></h4>
+		<h4>Общая цена заказа: <span data-bind="price: viewReceipts.totalPrice"></span></h4>
 		<input type="button" value="Подтвердить" class="btn btn-success btn-order-yes" />
 		<input type="button" value="Отменить" class="btn btn-warning btn-order-no" />
 	</div>

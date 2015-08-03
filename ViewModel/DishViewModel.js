@@ -1,29 +1,25 @@
 ﻿define(["knockout"], function (ko) {
 
 	function DishViewModel(dish) {
-
 		var self = this;
-
-		self.dish = dish;
-		self.count = ko.observable(0);
-
-		self.totalPrice = ko.pureComputed(function () {
+		this.dish = dish;
+		this.count = ko.observable(0);
+		this.totalPrice = ko.pureComputed(function () {
 			return (self.dish.price * self.count());
 		});
-		self.isSelect = ko.pureComputed(function () {
+		this.isSelect = ko.pureComputed(function () {
 			return (self.count() !== 0);
 		});
-
-		self.add = function () {
+		this.add = function () {
 			self.count(self.count() + 1);
 		}
-		self.sub = function () {
+		this.sub = function () {
 			var count = self.count();
 			if (count > 0) {
 				self.count(count - 1);
 			}
 		}
-		self.clear = function () {
+		this.clear = function () {
 			self.count(0);
 		}
 	}

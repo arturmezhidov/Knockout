@@ -26,7 +26,7 @@
 			});
 		},
 
-		question: function (callback) {
+		question: function (yesCallback, noCallback) {
 
 			var back = this;
 			var dlg = $("#dialog-question").show();
@@ -38,16 +38,17 @@
 			dlg.find(".btn-cancel-yes").click(function () {
 				dlg.hide();
 				back.backUnblock();
-				callback();
+				yesCallback();
 			});
 
 			dlg.find(".btn-cancel-no").click(function () {
 				dlg.hide();
 				back.backUnblock();
+				noCallback();
 			});
 		},
 
-		confirm: function (callback) {
+		confirm: function (yesCallback, noCallback) {
 
 			var back = this;
 			var dlg = $("#dialog-order-confirm").show();
@@ -59,12 +60,13 @@
 			dlg.find(".btn-order-yes").click(function () {
 				dlg.hide();
 				back.backUnblock();
-				callback();
+				yesCallback();
 			});
 
 			dlg.find(".btn-order-no").click(function () {
 				dlg.hide();
 				back.backUnblock();
+				noCallback();
 			});
 		},
 

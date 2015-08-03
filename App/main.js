@@ -1,22 +1,21 @@
 ﻿require.config({
 	baseUrl: "../",
 	paths: {
-		"AppConfig": "App/config",
+		"config": "App/config",
 
 		"knockout": "Scripts/knockout",
 		"jquery": "Scripts/jquery-1.11.3.min",
-
 		"dlg": "Scripts/dlg",
-		"bind-init": "CustomBindings/bind-init",
 
-		"DataService": "Model/DataService",
-		"Dishes": "Model/Dishes",
+		"BaseService": "DAL/BaseService",
+		"dataContext": "DAL/dataContext",
 		"DishViewModel": "ViewModel/DishViewModel",
 		"DishesViewModel": "ViewModel/DishesViewModel",
-		"OrdersViewModel": "ViewModel/OrdersViewModel"
+		"ReceiptViewModel": "ViewModel/ReceiptViewModel",
+		"MainViewModel": "ViewModel/MainViewModel"
 	} 
 });
 
-require(["App/app"], function(app) {
+require(["App/app"], function (app) {
 	app.initialize();
 });

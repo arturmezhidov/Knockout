@@ -63,19 +63,18 @@
     <Content Include="App\app.js" />
     <Content Include="App\config.js" />
     <Content Include="App\main.js" />
-    <Content Include="CustomBindings\bind-init.js" />
     <Content Include="CustomBindings\fade.js" />
     <Content Include="CustomBindings\price.js" />
     <Content Include="CustomBindings\select.js" />
+    <Content Include="DAL\dataContext.js" />
     <Content Include="Scripts\dlg.js" />
-    <Content Include="Model\DataService.js" />
-    <Content Include="Model\Dishes.js" />
+    <Content Include="DAL\BaseService.js" />
     <Content Include="packages.config" />
-    <Content Include="Fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -109,12 +108,13 @@
     <Content Include="Scripts\jquery-1.11.3.min.js" />
     <Content Include="Scripts\knockout.js" />
     <Content Include="Scripts\require.js" />
-    <Content Include="Style\bootstrap-theme.css" />
-    <Content Include="Style\bootstrap.css" />
-    <Content Include="Style\style.css" />
+    <Content Include="Content\Style\bootstrap-theme.css" />
+    <Content Include="Content\Style\bootstrap.css" />
+    <Content Include="Content\Style\style.css" />
     <Content Include="ViewModel\DishesViewModel.js" />
     <Content Include="ViewModel\DishViewModel.js" />
-    <Content Include="ViewModel\OrdersViewModel.js" />
+    <Content Include="ViewModel\MainViewModel.js" />
+    <Content Include="ViewModel\ReceiptViewModel.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

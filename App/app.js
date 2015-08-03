@@ -1,17 +1,10 @@
-﻿define(["AppConfig", "knockout", "Dishes", "DishesViewModel", "OrdersViewModel", "bind-init"],
-	function (AppConfig, ko, Dishes, DishesViewModel, OrdersViewModel) {
+﻿define(["knockout", "dataContext", "MainViewModel", "../CustomBindings/fade", "../CustomBindings/select", "../CustomBindings/price"], function (ko, dataContext, MainViewModel) {
 
 		function initialize() {
 
-			var dishCollection = new Dishes(AppConfig.DB_URL);
+			var dishes = dataContext.dishes.getAll();
 
-			var viewDishes = new DishesViewModel(dishCollection.dishes);
-			var viewOrders = new OrdersViewModel(viewDishes, AppConfig.MAX_ORDER);
-
-			var viewModel = {
-				dishes: viewDishes,
-				orders: viewOrders
-			}
+			var viewModel = new MainViewModel(dishes);
 
 			ko.applyBindings(viewModel);
 		};
