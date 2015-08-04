@@ -4,15 +4,11 @@
 		"config": "App/config",
 
 		"knockout": "Scripts/knockout",
-		"jquery": "Scripts/jquery-1.11.3.min",
-		"dlg": "Scripts/dlg",
+		"jquery": "scripts/libs/jquery-1.11.3.min",
+		"dlg": "scripts/libs/dlg",
 
 		"BaseService": "DAL/BaseService",
-		"dataContext": "DAL/dataContext",
-		"DishViewModel": "ViewModel/DishViewModel",
-		"DishesViewModel": "ViewModel/DishesViewModel",
-		"ReceiptViewModel": "ViewModel/ReceiptViewModel",
-		"MainViewModel": "ViewModel/MainViewModel"
+		"dataContext": "DAL/dataContext"
 	} 
 });
 

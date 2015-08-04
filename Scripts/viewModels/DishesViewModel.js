@@ -1,4 +1,4 @@
-﻿define(["knockout", "DishViewModel"], function (ko, DishViewModel) {
+﻿define(["knockout", "scripts/viewModels/DishViewModel"], function (ko, DishViewModel) {
 
 	function DishesViewModel(dishes) {
 		var self = this;

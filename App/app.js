@@ -1,4 +1,5 @@
-﻿define(["knockout", "dataContext", "MainViewModel", "../CustomBindings/fade", "../CustomBindings/select", "../CustomBindings/price"], function (ko, dataContext, MainViewModel) {
+﻿define(["knockout", "dataContext", "viewModels/MainViewModel", "customBindings/fade", "customBindings/select", "customBindings/price"],
+	function (ko, dataContext, MainViewModel) {
 
 		function initialize() {
 

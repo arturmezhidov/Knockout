@@ -1,4 +1,5 @@
-﻿define(["knockout", "config", "DishesViewModel", "ReceiptViewModel"], function (ko, config, DishesViewModel, ReceiptViewModel) {
+﻿define(["knockout", "config", "viewModels/DishesViewModel", "viewModels/ReceiptViewModel"],
+	function (ko, config, DishesViewModel, ReceiptViewModel) {
 
 	function MainViewModel(dishes) {
 		this.viewDishes = new DishesViewModel(dishes);

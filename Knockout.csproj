@@ -59,22 +59,22 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AppData\Dishes.json" />
-    <Content Include="App\app.js" />
-    <Content Include="App\config.js" />
-    <Content Include="App\main.js" />
-    <Content Include="CustomBindings\fade.js" />
-    <Content Include="CustomBindings\price.js" />
-    <Content Include="CustomBindings\select.js" />
-    <Content Include="DAL\dataContext.js" />
-    <Content Include="Scripts\dlg.js" />
-    <Content Include="DAL\BaseService.js" />
+    <Content Include="appData\Dishes.json" />
+    <Content Include="app\app.js" />
+    <Content Include="app\config.js" />
+    <Content Include="app\main.js" />
+    <Content Include="scripts\customBindings\fade.js" />
+    <Content Include="scripts\customBindings\price.js" />
+    <Content Include="scripts\customBindings\select.js" />
+    <Content Include="scripts\DAL\dataContext.js" />
+    <Content Include="scripts\libs\dlg.js" />
+    <Content Include="scripts\DAL\BaseService.js" />
     <Content Include="packages.config" />
-    <Content Include="Content\Fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\Fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\Fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\Fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="content\Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="content\Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="content\Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="content\Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="content\Fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -84,37 +84,36 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
-    <Content Include="AppData\Images\1f808da3b600.jpeg" />
-    <Content Include="AppData\Images\1f808da3b617.jpg" />
-    <Content Include="AppData\Images\1f808da3b629.jpg" />
-    <Content Include="AppData\Images\1f808da3b630.jpeg" />
-    <Content Include="AppData\Images\1f808da3b633.jpg" />
-    <Content Include="AppData\Images\1f808da3b634.jpg" />
-    <Content Include="AppData\Images\1f808da3b635.jpg" />
-    <Content Include="AppData\Images\1f808da3b655.jpg" />
-    <Content Include="AppData\Images\1f808da3b656.jpg" />
-    <Content Include="AppData\Images\1f808da3b660.jpg" />
-    <Content Include="AppData\Images\1f808da3b661.jpg" />
-    <Content Include="AppData\Images\1f808da3b662.jpg" />
-    <Content Include="AppData\Images\1f808da3b664.jpg" />
-    <Content Include="AppData\Images\1f808da3b665.jpg" />
-    <Content Include="AppData\Images\1f808da3b666.jpg" />
-    <Content Include="AppData\Images\1f808da3b6691.jpg" />
-    <Content Include="AppData\Images\1f808da3b667.jpg" />
-    <Content Include="AppData\Images\1f808da3b668.jpg" />
-    <Content Include="AppData\Images\1f808da3b669.jpg" />
-    <Content Include="AppData\Images\8092a8a543.jpg" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\jquery-1.11.3.min.js" />
-    <Content Include="Scripts\knockout.js" />
-    <Content Include="Scripts\require.js" />
-    <Content Include="Content\Style\bootstrap-theme.css" />
-    <Content Include="Content\Style\bootstrap.css" />
-    <Content Include="Content\Style\style.css" />
-    <Content Include="ViewModel\DishesViewModel.js" />
-    <Content Include="ViewModel\DishViewModel.js" />
-    <Content Include="ViewModel\MainViewModel.js" />
-    <Content Include="ViewModel\ReceiptViewModel.js" />
+    <Content Include="appData\Images\1f808da3b600.jpeg" />
+    <Content Include="appData\Images\1f808da3b617.jpg" />
+    <Content Include="appData\Images\1f808da3b629.jpg" />
+    <Content Include="appData\Images\1f808da3b630.jpeg" />
+    <Content Include="appData\Images\1f808da3b633.jpg" />
+    <Content Include="appData\Images\1f808da3b634.jpg" />
+    <Content Include="appData\Images\1f808da3b635.jpg" />
+    <Content Include="appData\Images\1f808da3b655.jpg" />
+    <Content Include="appData\Images\1f808da3b656.jpg" />
+    <Content Include="appData\Images\1f808da3b660.jpg" />
+    <Content Include="appData\Images\1f808da3b661.jpg" />
+    <Content Include="appData\Images\1f808da3b662.jpg" />
+    <Content Include="appData\Images\1f808da3b664.jpg" />
+    <Content Include="appData\Images\1f808da3b665.jpg" />
+    <Content Include="appData\Images\1f808da3b666.jpg" />
+    <Content Include="appData\Images\1f808da3b6691.jpg" />
+    <Content Include="appData\Images\1f808da3b667.jpg" />
+    <Content Include="appData\Images\1f808da3b668.jpg" />
+    <Content Include="appData\Images\1f808da3b669.jpg" />
+    <Content Include="appData\Images\8092a8a543.jpg" />
+    <Content Include="scripts\libs\jquery-1.11.3.min.js" />
+    <Content Include="scripts\libs\knockout.js" />
+    <Content Include="scripts\libs\require.js" />
+    <Content Include="content\Style\bootstrap-theme.css" />
+    <Content Include="content\Style\bootstrap.css" />
+    <Content Include="content\Style\style.css" />
+    <Content Include="scripts\viewModels\DishesViewModel.js" />
+    <Content Include="scripts\viewModels\DishViewModel.js" />
+    <Content Include="scripts\viewModels\MainViewModel.js" />
+    <Content Include="scripts\viewModels\ReceiptViewModel.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
