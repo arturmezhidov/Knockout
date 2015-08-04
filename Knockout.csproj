@@ -63,12 +63,12 @@
     <Content Include="app\app.js" />
     <Content Include="app\config.js" />
     <Content Include="app\main.js" />
-    <Content Include="scripts\customBindings\fade.js" />
-    <Content Include="scripts\customBindings\price.js" />
-    <Content Include="scripts\customBindings\select.js" />
-    <Content Include="scripts\DAL\dataContext.js" />
-    <Content Include="scripts\libs\dlg.js" />
-    <Content Include="scripts\DAL\BaseService.js" />
+    <Content Include="app\customBindings\fade.js" />
+    <Content Include="app\customBindings\price.js" />
+    <Content Include="app\customBindings\select.js" />
+    <Content Include="app\DAL\dataContext.js" />
+    <Content Include="app\modules\dlg.js" />
+    <Content Include="app\DAL\BaseService.js" />
     <Content Include="packages.config" />
     <Content Include="content\Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="content\Fonts\glyphicons-halflings-regular.svg" />
@@ -104,16 +104,19 @@
     <Content Include="appData\Images\1f808da3b668.jpg" />
     <Content Include="appData\Images\1f808da3b669.jpg" />
     <Content Include="appData\Images\8092a8a543.jpg" />
-    <Content Include="scripts\libs\jquery-1.11.3.min.js" />
-    <Content Include="scripts\libs\knockout.js" />
-    <Content Include="scripts\libs\require.js" />
+    <Content Include="scripts\jquery-1.11.3.min.js" />
+    <Content Include="scripts\knockout-3.3.0.debug.js" />
+    <Content Include="scripts\knockout-3.3.0.js" />
+    <Content Include="scripts\knockout.js" />
+    <Content Include="scripts\r.js" />
+    <Content Include="scripts\require.js" />
     <Content Include="content\Style\bootstrap-theme.css" />
     <Content Include="content\Style\bootstrap.css" />
     <Content Include="content\Style\style.css" />
-    <Content Include="scripts\viewModels\DishesViewModel.js" />
-    <Content Include="scripts\viewModels\DishViewModel.js" />
-    <Content Include="scripts\viewModels\MainViewModel.js" />
-    <Content Include="scripts\viewModels\ReceiptViewModel.js" />
+    <Content Include="app\viewModels\DishesViewModel.js" />
+    <Content Include="app\viewModels\DishViewModel.js" />
+    <Content Include="app\viewModels\MainViewModel.js" />
+    <Content Include="app\viewModels\ReceiptViewModel.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

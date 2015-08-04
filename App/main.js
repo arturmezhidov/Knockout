@@ -1,17 +1,13 @@
 ﻿require.config({
-	baseUrl: "../",
 	paths: {
-		"config": "App/config",
-
-		"knockout": "Scripts/knockout",
-		"jquery": "scripts/libs/jquery-1.11.3.min",
-		"dlg": "scripts/libs/dlg",
+		"knockout": "../scripts/knockout-3.3.0",
+		"jquery": "../scripts/jquery-1.11.3.min",
 
 		"BaseService": "DAL/BaseService",
 		"dataContext": "DAL/dataContext"
 	} 
 });
 
-require(["App/app"], function (app) {
+require(["app"], function (app) {
 	app.initialize();
 });

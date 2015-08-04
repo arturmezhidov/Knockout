@@ -1,4 +1,4 @@
-﻿define(["knockout", "dlg"], function (ko, dlg) {
+﻿define(["knockout", "modules/dlg"], function (ko, dlg) {
 
 	function ReceiptViewModel(dishesViewModel, maxReceipts) {
 
